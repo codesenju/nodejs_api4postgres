@@ -36,7 +36,7 @@ app.get("/api/v1/movies", (req, res) => {
   });
   app.get("/api/v1/movies/:title", (req, res) => {
     pool.query(
-      `select * from basic where LOWER(primarytitle) like LOWER('%${req.params.title}%')`,
+      `select * from basic where LOWER(primarytitle) like LOWER('%${req.params.title}%') AND titletype like 'movie%'`,
       [],
       (error, results) => {
         if (error) {
